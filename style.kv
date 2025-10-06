@@ -1,23 +1,41 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 
-<Screen>:
+<BoxLayout>:
     canvas.before:
         Color:
-            rgba: get_color_from_hex("#1a1918")  # синій фон для всіх Screen
+            rgba: get_color_from_hex("#1a1918")
         Rectangle:
             pos: self.pos
             size: self.size
-
-<BoxLayout>:
-    orientation: "vertical"
     padding: 20
     spacing: 10
 
+<GraveyardsList@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: get_color_from_hex("#353330")
+        Line:
+            rectangle: self.x, self.y, self.width, self.height
+            width: 2
+
 <Button>:
-    font_size: 45
-    background_color: get_color_from_hex("#858179")
+    font_size: 35
+    font_name: "font/Andika-Regular.ttf"
+    background_color: get_color_from_hex("#9e9a93")
+    color: get_color_from_hex("#e5e4e2")
+
+<Button>:
+    font_size: 35
+    font_name: "font/Andika-Regular.ttf"
+    background_color: get_color_from_hex("#9e9a93")
     color: get_color_from_hex("#e5e4e2")
 
 <Label>:
-    font_size: 42
+    font_size: 30
+    font_name: "font/Andika-Regular.ttf"
+    color: get_color_from_hex("#e5e4e2")
+
+<NameLabel@Label>:
+    font_size: 35
+    font_name: "font/Andika-Bold.ttf"
     color: get_color_from_hex("#e5e4e2")
