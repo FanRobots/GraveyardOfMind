@@ -1,0 +1,33 @@
+#:include styles.kv
+#:import CardTransition kivy.uix.screenmanager.CardTransition
+
+ScreenManager:
+    transition: CardTransition()
+    HomeScreen:
+    GraveyardsScreen:
+
+<HomeScreen>:
+    name: "home"
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Головний екран"
+        Button:
+            text: "До цвинтарів"
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.transition.mode = 'push'
+                root.manager.current = "graveyards"
+
+<GraveyardsScreen>:
+    name: "graveyards"
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            text: "Цвинтарі"
+        Button:
+            text: "На головну"
+            on_release:
+                root.manager.transition.direction = 'right'
+                root.manager.transition.mode = 'pop'
+                root.manager.current = "home"
