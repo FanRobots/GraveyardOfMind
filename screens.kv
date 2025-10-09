@@ -1,4 +1,4 @@
-#:include styles.kv
+#:include style.kv
 #:import CardTransition kivy.uix.screenmanager.CardTransition
 
 ScreenManager:
@@ -8,26 +8,44 @@ ScreenManager:
 
 <HomeScreen>:
     name: "home"
-    BoxLayout:
-        orientation: "vertical"
-        Label:
-            text: "Головний екран"
+    CustomBoxLayout:
+        RowBoxLayout:
+            Image:
+                source: "img/icon.png"
+                fit_mode: "contain"
+                keep_ratio: True
+            TitleLabel:
+                text: "Graveyard \nof mind"
         Button:
             text: "До цвинтарів"
             on_release:
                 root.manager.transition.direction = 'left'
                 root.manager.transition.mode = 'push'
                 root.manager.current = "graveyards"
+        Button:
+            text: "Закопати ідею"
+        Button:
+            text: "Викопати ідею"
+        Button:
+            text: "Про програму"
 
 <GraveyardsScreen>:
     name: "graveyards"
-    BoxLayout:
+    CustomBoxLayout:
         orientation: "vertical"
-        Label:
-            text: "Цвинтарі"
-        Button:
-            text: "На головну"
-            on_release:
-                root.manager.transition.direction = 'right'
-                root.manager.transition.mode = 'pop'
-                root.manager.current = "home"
+        RowBoxLayout:
+            size_hint_y: None
+            Button:
+                size_hint_x: 0.4
+                text: "Назад"
+                on_release:
+                    root.manager.transition.direction = 'right'
+                    root.manager.transition.mode = 'pop'
+                    root.manager.current = "home"
+            Button:
+                size_hint_x: 0.6
+                text: "Створити"
+
+        GraveyardsAnchorLayout:
+            GraveyardsBoxLayout:
+                id: graveyard_list

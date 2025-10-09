@@ -1,41 +1,53 @@
 #:import get_color_from_hex kivy.utils.get_color_from_hex
 
-<BoxLayout>:
+<CustomBoxLayout@BoxLayout>:
+    orientation: "vertical"
+    padding: 20
+    spacing: 10
     canvas.before:
         Color:
             rgba: get_color_from_hex("#1a1918")
         Rectangle:
             pos: self.pos
             size: self.size
-    padding: 20
+
+<RowBoxLayout@CustomBoxLayout>:
+    orientation: "horizontal"
+    size_hint_y: 1
+    height: dp(50)
+    padding: 0
     spacing: 10
 
-<GraveyardsList@BoxLayout>:
+<GraveyardsBoxLayout@CustomBoxLayout>:
+    orientation: "vertical"
+    size_hint_y: None
+    height: dp(150)
+    padding: 5
+    spacing: 0
+
+
+<GraveyardsAnchorLayout@AnchorLayout>:
+    anchor_y: "top"
+
     canvas.before:
         Color:
             rgba: get_color_from_hex("#353330")
         Line:
             rectangle: self.x, self.y, self.width, self.height
-            width: 2
+            width: 1
+
 
 <Button>:
-    font_size: 35
+    size_hint_max_y: 50
     font_name: "font/Andika-Regular.ttf"
     background_color: get_color_from_hex("#9e9a93")
     color: get_color_from_hex("#e5e4e2")
 
-<Button>:
-    font_size: 35
-    font_name: "font/Andika-Regular.ttf"
-    background_color: get_color_from_hex("#9e9a93")
-    color: get_color_from_hex("#e5e4e2")
 
 <Label>:
     font_size: 30
     font_name: "font/Andika-Regular.ttf"
     color: get_color_from_hex("#e5e4e2")
 
-<NameLabel@Label>:
+<TitleLabel@Label>:
     font_size: 35
-    font_name: "font/Andika-Bold.ttf"
-    color: get_color_from_hex("#e5e4e2")
